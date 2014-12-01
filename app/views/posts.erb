@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>BLOG TAK JADI</h1>
+
+<div id="content">
+  <p>
+    <% @post.each do |post| %>
+      <div>
+        <p>Title: <a href='/posts/<%= post.id %>'><%= post.title %></a></p>
+        <p><%= post.body %></p>
+        <p>Posted at <%= post.created_at %></p>
+        Tags: <% post.tags.each do |tag| %>
+        <a href='tags/<%= tag.id %>'><%= tag.name %></a>
+        <% end %><br> <br>
+
+        <form action='/posts' method='post'>
+          <input type='hidden' name='_method' value='delete'>
+          <input type='hidden' name='id' value="<%= post.id %>">
+          <button value='submit'>Delete</button>
+        </form><br>
+
+          <a href='/posts/<%=post.id%>/edit'><button value='submit'>Edit</button></a> <br>
+        <br><br>
+      </div>
+    <% end %>
+    <line>
+  </p>
+</div>
+<br>
+  <p><a href='/'>HOME</a></p>
+
+
+</div>
